@@ -1,0 +1,22 @@
+<article class="session-card">
+    <header>
+        <div>
+            <h3>{{ session.date | date: 'longDate' }}</h3>
+            <p>{{ session.note || 'Poker session' }}</p>
+        </div>
+        <span class="balanced">Balanced</span>
+    </header>
+
+    <div class="session-totals">
+        <span>{{ session.players.length }} players</span>
+        <span>Table buy-in {{ totals.totalBuyIn | currency: 'USD' }}</span>
+    </div>
+
+    <ul>
+        <li *ngFor="let result of session.players">
+            <span>{{ playerName(result.playerId) }}</span>
+            <span>{{ result.buyIn | currency: 'USD' }} in</span>
+            <span>{{ result.cashOut | currency: 'USD' }} out</span>
+        </li>
+    </ul>
+</article>

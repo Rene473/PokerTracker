@@ -1,0 +1,76 @@
+<main class="dashboard">
+  <header class="masthead">
+    <div class="brand-mark" aria-hidden="true">PT</div>
+    <div class="brand-copy">
+      <p class="eyebrow">Poker tracker / season 2026</p>
+      <h1>Leaderboard</h1>
+    </div>
+    <span class="data-status"><span></span> Sample master data</span>
+  </header>
+
+  <section class="overview" aria-label="Season summary">
+    <div class="overview-title">
+      <p class="eyebrow">All-time table</p>
+      <p class="table-note">Totals are calculated from each player's attended sessions.</p>
+    </div>
+    <div class="overview-stat">
+      <span>Players</span>
+      <strong>{{ players().length }}</strong>
+    </div>
+    <div class="overview-stat">
+      <span>Sessions</span>
+      <strong>{{ sessions().length }}</strong>
+    </div>
+    <div class="overview-stat">
+      <span>Total buy-in</span>
+      <strong>{{ totalBuyIn | currency: 'USD' : 'symbol' : '1.0-0' }}</strong>
+    </div>
+    <div class="overview-stat">
+      <span>Table balance</span>
+      <strong [class.negative]="totalNet !== 0">{{ totalNet | currency: 'USD' : 'symbol' : '1.0-0' }}</strong>
+    </div>
+  </section>
+
+  <div class="content-grid">
+    <section class="standings" aria-labelledby="standings-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Season standings</p>
+          <h2 id="standings-title">Players</h2>
+        </div>
+        <span>{{ players().length }} tracked</span>
+      </div>
+
+      <div class="player-grid">
+        <app-player-card
+          *ngFor="let player of players()"
+          [player]="player"
+        />
+      </div>
+    </section>
+
+    <section class="sessions" aria-labelledby="sessions-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Recent activity</p>
+          <h2 id="sessions-title">Sessions</h2>
+        </div>
+        <span>{{ sessions().length }} recorded</span>
+      </div>
+
+      <div class="session-list">
+        <app-session-card
+          *ngFor="let session of sessions()"
+          [session]="session"
+          [players]="playerDirectory()"
+        />
+      </div>
+    </section>
+  </div>
+
+  <footer class="page-footer">
+    <span>Cash-out total</span>
+    <strong>{{ totalCashOut | currency: 'USD' : 'symbol' : '1.2-2' }}</strong>
+    <span>Cash-outs equal total buy-ins across balanced sessions.</span>
+  </footer>
+</main>

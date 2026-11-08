@@ -1,0 +1,83 @@
+:host {
+  display: block;
+}
+
+.player-card {
+  padding: 18px;
+  border: 1px solid #d8dfd7;
+  border-radius: 6px;
+  background: #fffefa;
+}
+
+.player-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.initial {
+  display: grid;
+  width: 40px;
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 50%;
+  background: #e8eee8;
+  color: #355a45;
+  font-weight: 700;
+}
+
+h3,
+p {
+  margin: 0;
+}
+
+h3 {
+  color: #17231d;
+  font-size: 1rem;
+}
+
+.player-heading p {
+  margin-top: 4px;
+  color: #68756c;
+  font-size: 0.8rem;
+}
+
+.net {
+  margin-left: auto;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
+.positive {
+  color: #167447;
+}
+
+.negative {
+  color: #b44435;
+}
+
+.totals {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 18px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid #e6e9e3;
+}
+
+.totals div {
+  display: grid;
+  gap: 5px;
+}
+
+dt {
+  color: #68756c;
+  font-size: 0.75rem;
+}
+
+dd {
+  margin: 0;
+  color: #24352b;
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+}

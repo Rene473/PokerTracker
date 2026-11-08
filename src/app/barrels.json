@@ -1,0 +1,44 @@
+{
+    "barrels": [
+        {
+            "feature": "data",
+            "pathAlias": "@app/data",
+            "entryPoint": "./data/index.ts"
+        },
+        {
+            "feature": "leaderboard",
+            "pathAlias": "@app/leaderboard",
+            "entryPoint": "./leaderboard/index.ts"
+        },
+        {
+            "feature": "player",
+            "pathAlias": "@app/player",
+            "entryPoint": "./player/index.ts"
+        },
+        {
+            "feature": "player-data-access",
+            "pathAlias": "@app/player/data-access",
+            "entryPoint": "./player/data-access/index.ts"
+        },
+        {
+            "feature": "player-models",
+            "pathAlias": "@app/player/models",
+            "entryPoint": "./player/models/index.ts"
+        },
+        {
+            "feature": "session",
+            "pathAlias": "@app/session",
+            "entryPoint": "./session/index.ts"
+        },
+        {
+            "feature": "session-data-access",
+            "pathAlias": "@app/session/data-access",
+            "entryPoint": "./session/data-access/index.ts"
+        },
+        {
+            "feature": "session-models",
+            "pathAlias": "@app/session/models",
+            "entryPoint": "./session/models/index.ts"
+        }
+    ]
+}

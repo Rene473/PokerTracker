@@ -1,0 +1,195 @@
+:host {
+  display: block;
+  min-height: 100%;
+  color: #17231d;
+  background: #f1f3ed;
+  font-family: 'Aptos', 'Segoe UI', sans-serif;
+}
+
+.dashboard {
+  width: min(1440px, 100%);
+  margin: 0 auto;
+  padding: 28px clamp(18px, 4vw, 56px) 36px;
+}
+
+.masthead {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #d5ddd3;
+}
+
+.brand-mark {
+  display: grid;
+  width: 42px;
+  aspect-ratio: 1;
+  place-items: center;
+  background: #183c2b;
+  color: #eff5e9;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.brand-copy {
+  flex: 1;
+}
+
+.eyebrow {
+  margin: 0;
+  color: #66776b;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 0;
+  font-size: 1.65rem;
+}
+
+.data-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #59685d;
+  font-size: 0.8rem;
+}
+
+.data-status span {
+  width: 8px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #c88531;
+}
+
+.overview {
+  display: grid;
+  grid-template-columns: minmax(200px, 1.8fr) repeat(4, minmax(90px, 1fr));
+  align-items: center;
+  gap: 18px;
+  padding: 22px 0;
+  border-bottom: 1px solid #d5ddd3;
+}
+
+.overview-title .eyebrow {
+  color: #26734c;
+}
+
+.table-note {
+  margin: 6px 0 0;
+  color: #66776b;
+  font-size: 0.8rem;
+}
+
+.overview-stat {
+  display: grid;
+  gap: 7px;
+}
+
+.overview-stat span {
+  color: #66776b;
+  font-size: 0.74rem;
+}
+
+.overview-stat strong {
+  font-size: 1.15rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.negative {
+  color: #b44435;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(320px, 1fr);
+  align-items: start;
+  gap: 36px;
+  padding-top: 30px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.section-heading .eyebrow {
+  color: #26734c;
+}
+
+.section-heading h2 {
+  margin: 4px 0 0;
+  font-size: 1.3rem;
+}
+
+.section-heading > span {
+  color: #66776b;
+  font-size: 0.78rem;
+}
+
+.player-grid,
+.session-list {
+  display: grid;
+  gap: 10px;
+}
+
+.page-footer {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #d5ddd3;
+  color: #66776b;
+  font-size: 0.8rem;
+}
+
+.page-footer strong {
+  color: #17231d;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 900px) {
+  .overview {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .overview-title {
+    grid-column: 1 / -1;
+  }
+
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .dashboard {
+    padding-inline: 14px;
+  }
+
+  .data-status {
+    max-width: 110px;
+    text-align: right;
+  }
+
+  .overview {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .page-footer {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+}

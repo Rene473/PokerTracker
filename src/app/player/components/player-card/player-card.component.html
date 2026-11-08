@@ -1,0 +1,23 @@
+<article class="player-card">
+    <div class="player-heading">
+        <span class="initial">{{ player.name.charAt(0) }}</span>
+        <div>
+            <h3>{{ player.name }}</h3>
+            <p>{{ player.sessionsAttended }} sessions played</p>
+        </div>
+        <span class="net" [ngClass]="player.netProfit >= 0 ? 'positive' : 'negative'">
+            {{ player.netProfit | currency: 'USD' : 'symbol' : '1.2-2' }}
+        </span>
+    </div>
+
+    <dl class="totals">
+        <div>
+            <dt>Buy-ins</dt>
+            <dd>{{ player.totalBuyIn | currency: 'USD' : 'symbol' : '1.2-2' }}</dd>
+        </div>
+        <div>
+            <dt>Cash-out</dt>
+            <dd>{{ player.totalCashOut | currency: 'USD' : 'symbol' : '1.2-2' }}</dd>
+        </div>
+    </dl>
+</article>

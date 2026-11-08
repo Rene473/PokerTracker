@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+
+import { LeaderboardPageComponent } from '@app/leaderboard';
 
 @Component({
     selector: 'app-root',
-    imports: [RouterOutlet],
+    standalone: true,
+    imports: [LeaderboardPageComponent],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',
 })
-export class AppComponent {
-    title = 'pokertracker';
-}
+export class AppComponent {}
