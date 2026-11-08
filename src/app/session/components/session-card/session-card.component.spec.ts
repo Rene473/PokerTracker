@@ -18,7 +18,7 @@ describe('SessionCardComponent', () => {
         fixture.detectChanges();
 
         expect(fixture.nativeElement.textContent).toContain('Alex');
-        expect(fixture.nativeElement.textContent).toContain('$100.00');
+        expect(fixture.nativeElement.textContent).toContain('NZ$100.00');
         expect(fixture.nativeElement.textContent).toContain('Balanced');
     });
 });

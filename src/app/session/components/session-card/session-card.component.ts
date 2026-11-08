@@ -1,4 +1,4 @@
-import { CurrencyPipe, DatePipe, NgFor } from '@angular/common';
+import { CurrencyPipe, DatePipe } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
 import type { Player } from '@app/player/models';
@@ -8,7 +8,7 @@ import type { PokerSession } from '../../models/session.model';
 @Component({
     selector: 'app-session-card',
     standalone: true,
-    imports: [CurrencyPipe, DatePipe, NgFor],
+    imports: [CurrencyPipe, DatePipe],
     templateUrl: './session-card.component.html',
     styleUrl: './session-card.component.scss',
 })

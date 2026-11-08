@@ -61,4 +61,3 @@ Keep styles close to the component they affect. Do not add app-wide rules to `sr
 - Test component rendering at the component boundary using required inputs.
 - Run the focused spec after changing a feature, then run `npm run build` for Angular template/type validation.
 - Do not add tests that assert implementation details when observable behavior can be tested instead.
-

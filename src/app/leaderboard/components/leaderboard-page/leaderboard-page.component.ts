@@ -1,4 +1,4 @@
-import { CurrencyPipe, NgFor } from '@angular/common';
+import { CurrencyPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 
 import { PlayerCardComponent } from '@app/player';
@@ -8,7 +8,7 @@ import { LeaderboardService } from '../../data-access/leaderboard.service';
 @Component({
     selector: 'app-leaderboard-page',
     standalone: true,
-    imports: [CurrencyPipe, NgFor, PlayerCardComponent, SessionCardComponent],
+    imports: [CurrencyPipe, PlayerCardComponent, SessionCardComponent],
     templateUrl: './leaderboard-page.component.html',
     styleUrl: './leaderboard-page.component.scss',
 })
