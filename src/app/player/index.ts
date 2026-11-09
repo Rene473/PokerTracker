@@ -2,6 +2,5 @@ export { PlayerCardComponent } from './components/player-card/player-card.compon
 export {
     calculatePlayerStatistics,
     type Player,
-    type PlayerHistoricalTotals,
     type PlayerStatistics,
 } from './models';

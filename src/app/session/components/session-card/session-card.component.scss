@@ -34,10 +34,14 @@ header p {
     font-size: 0.8rem;
 }
 
-.balanced {
+.balance-status {
     color: #167447;
     font-size: 0.75rem;
     font-weight: 700;
+}
+
+.unbalanced {
+    color: #b44435;
 }
 
 .session-totals {

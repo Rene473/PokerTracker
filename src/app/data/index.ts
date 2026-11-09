@@ -1,1 +1,1 @@
-export { masterData, type MasterData } from './master-data';
+export type { MasterData } from './models';

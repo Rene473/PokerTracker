@@ -1,7 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
 import { calculatePlayerStatistics } from './player.model';
-import { masterData } from '@app/data';
 
 const players = [
     { id: 'alice', name: 'Alice' },
@@ -51,46 +50,5 @@ describe('calculatePlayerStatistics', () => {
             netProfit: 0,
             sessionsAttended: 0,
         });
-    });
-
-    it('adds new session results to imported cumulative totals', () => {
-        const statistics = calculatePlayerStatistics(
-            players,
-            sessions.slice(0, 1),
-            [
-                {
-                    playerId: 'alice',
-                    totalBuyIn: 500,
-                    totalCashOut: 400,
-                    sessionsAttended: 8,
-                },
-            ],
-        );
-
-        expect(statistics.find(({ id }) => id === 'alice')).toMatchObject({
-            id: 'alice',
-            totalBuyIn: 600,
-            totalCashOut: 580,
-            netProfit: -20,
-            sessionsAttended: 9,
-        });
-    });
-
-    it('uses the cumulative winnings data as the leaderboard baseline', () => {
-        const statistics = calculatePlayerStatistics(
-            masterData.players,
-            masterData.sessions,
-            masterData.historicalTotals,
-        );
-
-        expect(statistics).toHaveLength(14);
-        expect(statistics[0]).toMatchObject({
-            name: 'Alex',
-            totalBuyIn: 1370,
-            totalCashOut: 2217.95,
-            sessionsAttended: 14,
-        });
-        expect(statistics[0].netProfit).toBeCloseTo(847.95);
-        expect(statistics.reduce((total, player) => total + player.netProfit, 0)).toBeCloseTo(-302.75);
     });
 });

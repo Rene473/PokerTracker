@@ -20,6 +20,10 @@ export class SessionCardComponent {
         return calculateSessionTotals(this.session);
     }
 
+    get isBalanced(): boolean {
+        return Math.abs(this.totals.netTable) < 0.01;
+    }
+
     playerName(playerId: string): string {
         return (
             this.players.find((player) => player.id === playerId)?.name ??

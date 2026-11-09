@@ -5,6 +5,9 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
     resolve: {
         alias: {
+            '@app/data/data-access': fileURLToPath(
+                new URL('./src/app/data/data-access/index.ts', import.meta.url),
+            ),
             '@app/data': fileURLToPath(
                 new URL('./src/app/data/index.ts', import.meta.url),
             ),
@@ -29,11 +32,11 @@ export default defineConfig({
                     import.meta.url,
                 ),
             ),
-            '@app/session': fileURLToPath(
-                new URL('./src/app/session/index.ts', import.meta.url),
-            ),
             '@app/session/models': fileURLToPath(
                 new URL('./src/app/session/models/index.ts', import.meta.url),
+            ),
+            '@app/session': fileURLToPath(
+                new URL('./src/app/session/index.ts', import.meta.url),
             ),
         },
     },

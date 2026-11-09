@@ -6,7 +6,7 @@ export interface SessionPlayerResult {
 
 export interface PokerSession {
     id: string;
-    date: string;
+    date: string | null;
     note?: string;
     players: SessionPlayerResult[];
 }

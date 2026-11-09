@@ -12,36 +12,22 @@ export interface PlayerStatistics extends Player {
     sessionsAttended: number;
 }
 
-export interface PlayerHistoricalTotals {
-    playerId: string;
-    totalBuyIn: number;
-    totalCashOut: number;
-    sessionsAttended: number;
-}
-
 export function calculatePlayerStatistics(
     players: Player[],
     sessions: PokerSession[],
-    historicalTotals: PlayerHistoricalTotals[] = [],
 ): PlayerStatistics[] {
-    const historicalTotalsByPlayer = new Map(
-        historicalTotals.map((totals) => [totals.playerId, totals]),
-    );
-
     return players
         .map((player) => {
             const results = sessions.flatMap((session) =>
-                session.players
-                    .filter((entry) => entry.playerId === player.id)
+                session.players.filter((entry) => entry.playerId === player.id),
             );
-            const historical = historicalTotalsByPlayer.get(player.id);
             const totalBuyIn = results.reduce(
                 (total, result) => total + result.buyIn,
-                historical?.totalBuyIn ?? 0,
+                0,
             );
             const totalCashOut = results.reduce(
                 (total, result) => total + result.cashOut,
-                historical?.totalCashOut ?? 0,
+                0,
             );
 
             return {
@@ -49,8 +35,7 @@ export function calculatePlayerStatistics(
                 totalBuyIn,
                 totalCashOut,
                 netProfit: totalCashOut - totalBuyIn,
-                sessionsAttended:
-                    (historical?.sessionsAttended ?? 0) + results.length,
+                sessionsAttended: results.length,
             };
         })
         .sort((left, right) => right.netProfit - left.netProfit);

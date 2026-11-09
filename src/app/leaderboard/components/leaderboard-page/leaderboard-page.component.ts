@@ -18,6 +18,8 @@ export class LeaderboardPageComponent {
     readonly players = this.leaderboardService.players;
     readonly sessions = this.leaderboardService.sessions;
     readonly playerDirectory = this.leaderboardService.playerDirectory;
+    readonly loading = this.leaderboardService.loading;
+    readonly error = this.leaderboardService.error;
 
     get totalBuyIn(): number {
         return this.players().reduce(

@@ -6,6 +6,11 @@
             "entryPoint": "./data/index.ts"
         },
         {
+            "feature": "data-access",
+            "pathAlias": "@app/data/data-access",
+            "entryPoint": "./data/data-access/index.ts"
+        },
+        {
             "feature": "leaderboard",
             "pathAlias": "@app/leaderboard",
             "entryPoint": "./leaderboard/index.ts"
