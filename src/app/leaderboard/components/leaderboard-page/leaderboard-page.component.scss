@@ -133,7 +133,7 @@ h1 {
     font-size: 1.3rem;
 }
 
-.section-heading > span {
+.section-heading>span {
     color: #66776b;
     font-size: 0.78rem;
 }
@@ -142,6 +142,15 @@ h1 {
 .session-list {
     display: grid;
     gap: 10px;
+}
+
+.empty-state {
+    margin: 0;
+    padding: 18px;
+    border: 1px dashed #b7c3b6;
+    color: #66776b;
+    font-size: 0.85rem;
+    line-height: 1.5;
 }
 
 .page-footer {

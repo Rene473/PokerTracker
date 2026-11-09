@@ -1,11 +1,11 @@
 import { Injectable, signal } from '@angular/core';
 
-import { fakeMasterData } from '@app/data';
+import { masterData } from '@app/data';
 import type { Player } from '../models/player.model';
 
 @Injectable({ providedIn: 'root' })
 export class PlayerService {
-    private readonly storageKey = 'poker-tracker.players.v1';
+    private readonly storageKey = 'poker-tracker.players.v2';
     readonly players = signal<Player[]>(this.loadPlayers());
 
     addPlayer(player: Player): void {
@@ -18,7 +18,7 @@ export class PlayerService {
 
     private loadPlayers(): Player[] {
         if (typeof window === 'undefined') {
-            return fakeMasterData.players;
+            return masterData.players;
         }
 
         const storedPlayers = window.localStorage.getItem(this.storageKey);
@@ -26,15 +26,15 @@ export class PlayerService {
         if (!storedPlayers) {
             window.localStorage.setItem(
                 this.storageKey,
-                JSON.stringify(fakeMasterData.players),
+                JSON.stringify(masterData.players),
             );
-            return fakeMasterData.players;
+            return masterData.players;
         }
 
         try {
             return JSON.parse(storedPlayers) as Player[];
         } catch {
-            return fakeMasterData.players;
+            return masterData.players;
         }
     }
 

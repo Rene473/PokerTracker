@@ -2,17 +2,17 @@
     <header class="masthead">
         <div class="brand-mark" aria-hidden="true">PT</div>
         <div class="brand-copy">
-            <p class="eyebrow">Poker tracker / season 2026</p>
+            <p class="eyebrow">Poker tracker / cumulative results</p>
             <h1>Leaderboard</h1>
         </div>
-        <span class="data-status"><span></span> Sample master data</span>
+        <span class="data-status"><span></span> From cumulative CSV</span>
     </header>
 
     <section class="overview" aria-label="Season summary">
         <div class="overview-title">
             <p class="eyebrow">All-time table</p>
             <p class="table-note">
-                Totals are calculated from each player's attended sessions.
+                Historical totals come from the cumulative CSV; future sessions add to them.
             </p>
         </div>
         <div class="overview-stat">
@@ -27,13 +27,13 @@
             <span>Total buy-in</span>
             <strong>{{
                 totalBuyIn | currency: "NZD" : "symbol" : "1.0-0"
-            }}</strong>
+                }}</strong>
         </div>
         <div class="overview-stat">
-            <span>Table balance</span>
+            <span>Net results</span>
             <strong [class.negative]="totalNet !== 0">{{
                 totalNet | currency: "NZD" : "symbol" : "1.0-0"
-            }}</strong>
+                }}</strong>
         </div>
     </section>
 
@@ -49,7 +49,7 @@
 
             <div class="player-grid">
                 @for (player of players(); track player.id) {
-                    <app-player-card [player]="player" />
+                <app-player-card [player]="player" />
                 }
             </div>
         </section>
@@ -57,7 +57,7 @@
         <section class="sessions" aria-labelledby="sessions-title">
             <div class="section-heading">
                 <div>
-                    <p class="eyebrow">Recent activity</p>
+                    <p class="eyebrow">Detailed history</p>
                     <h2 id="sessions-title">Sessions</h2>
                 </div>
                 <span>{{ sessions().length }} recorded</span>
@@ -65,10 +65,12 @@
 
             <div class="session-list">
                 @for (session of sessions(); track session.id) {
-                    <app-session-card
-                        [session]="session"
-                        [players]="playerDirectory()"
-                    />
+                <app-session-card [session]="session" [players]="playerDirectory()" />
+                }
+                @if (sessions().length === 0) {
+                <p class="empty-state">
+                    The cumulative file has totals only. Individual session records can be added here.
+                </p>
                 }
             </div>
         </section>
@@ -78,7 +80,7 @@
         <span>Cash-out total</span>
         <strong>{{
             totalCashOut | currency: "NZD" : "symbol" : "1.2-2"
-        }}</strong>
-        <span>Cash-outs equal total buy-ins across balanced sessions.</span>
+            }}</strong>
+        <span>Historical net is calculated from total cash-outs minus total buy-ins.</span>
     </footer>
 </main>
