@@ -7,7 +7,7 @@ Organize code by feature and keep UI, domain rules, and persistence separate. Pr
 - Components render and coordinate one UI responsibility.
 - Domain models and pure calculations live outside components.
 - Feature services own feature state and persistence boundaries.
-- A leaderboard is derived from player identities and session results; do not persist duplicate totals that can drift from session data.
+- A leaderboard is derived from player identities, any imported historical baseline, and detailed session results. Historical baselines are only needed when the source has aggregate totals but no per-session rows; new session results are added to that baseline.
 - Depend on another feature through its public barrel, not through its internal file paths.
 - Use explicit `import type` for type-only dependencies.
 
@@ -39,10 +39,11 @@ Prefer standalone components, explicit imports, typed required inputs for requir
 
 ## Domain Rules
 
-- A player is an identity; lifetime totals are derived from session participation.
+- A player is an identity; lifetime totals are derived from session participation plus an optional historical baseline imported from aggregate-only data.
 - A session contains player IDs, buy-ins, and cash-outs. It does not duplicate player names.
 - A session is balanced when the sum of its buy-ins equals the sum of its cash-outs, within the currency rounding tolerance.
 - Attendance is the number of sessions with a result for that player, not the total number of sessions.
+- Do not invent detailed sessions from cumulative totals. Keep the aggregate baseline separate until session-level source data is available.
 - Keep parsers and persistence adapters at the data-access boundary; map imported data to domain models there.
 
 ## Public APIs and Barrels

@@ -1,1 +1,1 @@
-export { fakeMasterData, type MasterData } from './master-data';
+export { masterData, type MasterData } from './master-data';

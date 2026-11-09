@@ -1,12 +1,12 @@
 import { Injectable, signal } from '@angular/core';
 
-import { fakeMasterData } from '@app/data';
+import { masterData } from '@app/data';
 import { isSessionBalanced } from '../models/session.model';
 import type { PokerSession } from '../models/session.model';
 
 @Injectable({ providedIn: 'root' })
 export class SessionService {
-    private readonly storageKey = 'poker-tracker.sessions.v1';
+    private readonly storageKey = 'poker-tracker.sessions.v2';
     readonly sessions = signal<PokerSession[]>(this.loadSessions());
 
     addSession(session: PokerSession): void {
@@ -19,7 +19,7 @@ export class SessionService {
 
     private loadSessions(): PokerSession[] {
         if (typeof window === 'undefined') {
-            return fakeMasterData.sessions;
+            return masterData.sessions;
         }
 
         const storedSessions = window.localStorage.getItem(this.storageKey);
@@ -27,15 +27,15 @@ export class SessionService {
         if (!storedSessions) {
             window.localStorage.setItem(
                 this.storageKey,
-                JSON.stringify(fakeMasterData.sessions),
+                JSON.stringify(masterData.sessions),
             );
-            return fakeMasterData.sessions;
+            return masterData.sessions;
         }
 
         try {
             return JSON.parse(storedSessions) as PokerSession[];
         } catch {
-            return fakeMasterData.sessions;
+            return masterData.sessions;
         }
     }
 
